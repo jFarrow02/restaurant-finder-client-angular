@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import { RestaurantService } from './restaurant.service';
+import { RestaurantInterface } from '../interfaces';
+import { data } from '../data/restaurants';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +10,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'restaurant-finder-angular';
+
+  title = 'RestaurantFinder';
+  restaurantList: Array<Array<RestaurantInterface>> = [];
+  private restaurantService: RestaurantService;
+
+  constructor(){}
+
+  ngOnInit(){
+    this.restaurantService = new RestaurantService(data);
+    this.restaurantList = this.restaurantService.fetchRestaurants();
+  }
 }

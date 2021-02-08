@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
+import { RestaurantInterface } from '../../interfaces';
 
 @Component({
   selector: 'app-restaurant-list',
   templateUrl: './restaurant-list.component.html',
   styleUrls: ['./restaurant-list.component.sass']
 })
-export class RestaurantListComponent implements OnInit {
+export class RestaurantListComponent {
 
-  constructor() { }
+  @Input()
+  restaurantList: Array<Array<RestaurantInterface>> = [];
 
-  ngOnInit() {
-  }
+  constructor() {}
 
 }
